@@ -1,43 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { events, invoke } from '@forge/bridge';
+import React, { useEffect, useState } from "react";
+import CharacterPreview from "./components/character-preview/CharacterPreview";
+import CharacterSelect from "./components/character-select/CharacterSelect";
 
 function App() {
-  const [data, setData] = useState(null);
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
+    const [characterList, setCharacterList] = useState([]);
 
-  const handleFetchSuccess = (data) => {
-    setData(data);
-    if (data.length === 0) {
-      throw new Error('No labels returned');
-    }
-  };
-  const handleFetchError = () => {
-    console.error('Failed to get label');
-  };
+    const [charactersError, setCharactersError] = useState(null);
+    const [charactersLoading, setCharactersLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchLabels = async () => invoke('fetchLabels');
-    fetchLabels().then(handleFetchSuccess).catch(handleFetchError);
-    const subscribeForIssueChangedEvent = () =>
-      events.on('JIRA_ISSUE_CHANGED', () => {
-        fetchLabels().then(handleFetchSuccess).catch(handleFetchError);
-      });
-    const subscription = subscribeForIssueChangedEvent();
-
-    return () => {
-      subscription.then((subscription) => subscription.unsubscribe());
+    // Fetch all the character details
+    const getAllCharacters = async () => {
+        try {
+            const response = await fetch("https://swapi.dev/api/people/");
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const json = await response.json();
+            setCharacterList(json.results);
+        } catch (error) {
+            setCharactersError(error);
+        } finally {
+            setCharactersLoading(false);
+        }
     };
-  }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-  const labels = data.map((label) => <div>{label}</div>);
-  return (
-    <div>
-      <span>Issue labels:</span>
-      <div>{labels}</div>
-    </div>
-  );
+    // Fetch the character details when the component is loaded
+    useEffect(() => {
+        getAllCharacters();
+    }, []);
+
+    return (
+        <div>
+            {charactersLoading && <p>Loading...</p>}
+            {charactersError && <p>Error: {charactersError.message}</p>}
+            {characterList.length === 0 && !charactersLoading && (
+                <p>No characters found</p>
+            )}
+            {characterList.length > 0 && !charactersLoading && (
+                <>
+                    <CharacterSelect
+                        characterList={characterList}
+                        selectedCharacter={selectedCharacter}
+                        setSelectedCharacter={setSelectedCharacter}
+                    />
+                    <CharacterPreview selectedCharacter={selectedCharacter} />
+                </>
+            )}
+        </div>
+    );
 }
 
 export default App;
