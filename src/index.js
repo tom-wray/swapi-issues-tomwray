@@ -2,9 +2,12 @@ import Resolver from '@forge/resolver';
 import api, { route } from '@forge/api';
 const resolver = new Resolver();
 
+// Create a Jira ticket with the selected character details as the summary
 resolver.define("createJiraTicket", async (req) => {
+  // Get the project key from the extension context
   const projectKey = req.context.extension.project.key;
 
+  // Call the jira API to create a new issue
   const res = await api.asUser().requestJira(route`/rest/api/3/issue`, {
       method: "POST",
       headers: {
