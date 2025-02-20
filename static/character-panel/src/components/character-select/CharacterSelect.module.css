@@ -1,0 +1,11 @@
+.character_select_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.character_select_container > select {
+    flex: 1 1 auto;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}

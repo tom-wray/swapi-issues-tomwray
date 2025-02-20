@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import JiraTicketCreator from "../jira-ticket-creator/JiraTicketCreator";
+import styles from "./CharacterPreview.module.css";
 
 function CharacterPreview({ selectedCharacter }) {
     if (!selectedCharacter) {
@@ -8,12 +9,22 @@ function CharacterPreview({ selectedCharacter }) {
     }
 
     return (
-        <div>
-            <h2>{selectedCharacter.name}</h2>
-            <p>Height: {selectedCharacter.height}cm</p>
-            <p>Mass: {selectedCharacter.mass}kg</p>
-            <p>Hair colour: {selectedCharacter.hair_color}</p>
-            <p>Skin colour: {selectedCharacter.skin_color}</p>
+        <div className={styles.character_preview_container}>
+            <h2 className={styles.character_name}>{selectedCharacter.name}</h2>
+            <div className={styles.character_details}>
+                <p className={styles.character_detail}>
+                    Height: {selectedCharacter.height}cm
+                </p>
+                <p className={styles.character_detail}>
+                    Mass: {selectedCharacter.mass}kg
+                </p>
+                <p className={styles.character_detail}>
+                    Hair colour: {selectedCharacter.hair_color}
+                </p>
+                <p className={styles.character_detail}>
+                    Skin colour: {selectedCharacter.skin_color}
+                </p>
+            </div>
 
             <JiraTicketCreator selectedCharacter={selectedCharacter} />
         </div>

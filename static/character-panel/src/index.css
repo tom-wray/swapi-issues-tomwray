@@ -1,0 +1,8 @@
+body {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.error_message {
+    color: red;
+}

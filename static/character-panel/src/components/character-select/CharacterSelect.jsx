@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./CharacterSelect.module.css";
 
 function CharacterSelect({
     characterList,
@@ -7,7 +8,7 @@ function CharacterSelect({
     setSelectedCharacter,
 }) {
     return (
-        <div>
+        <div className={styles.character_select_container}>
             <label htmlFor="character-select">Select a character:</label>
             <select
                 id="character-select"

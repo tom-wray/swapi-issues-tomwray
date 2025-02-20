@@ -33,7 +33,11 @@ function App() {
     return (
         <div>
             {charactersLoading && <p>Loading...</p>}
-            {charactersError && <p>Error: {charactersError.message}</p>}
+            {charactersError && (
+                <p className="error_message">
+                    Error: {charactersError.message}
+                </p>
+            )}
             {characterList.length === 0 && !charactersLoading && (
                 <p>No characters found</p>
             )}
@@ -44,6 +48,7 @@ function App() {
                         selectedCharacter={selectedCharacter}
                         setSelectedCharacter={setSelectedCharacter}
                     />
+                    <hr />
                     <CharacterPreview selectedCharacter={selectedCharacter} />
                 </>
             )}

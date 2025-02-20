@@ -1,6 +1,7 @@
 import { invoke } from "@forge/bridge";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import styles from "./JiraTicketCreator.module.css";
 
 function JiraTicketCreator({ selectedCharacter }) {
     const [jiraTicketError, setJiraTicketError] = useState(null);
@@ -10,6 +11,8 @@ function JiraTicketCreator({ selectedCharacter }) {
     // Add a Jira ticket with the selected character details
     const addJiraTicket = async () => {
         if (selectedCharacter) {
+            setJiraTicket(null);
+            setJiraTicketError(null);
             setJiraTicketLoading(true);
             try {
                 const response = await invoke("createJiraTicket", {
@@ -25,11 +28,18 @@ function JiraTicketCreator({ selectedCharacter }) {
     };
 
     return (
-        <div>
-            <button onClick={addJiraTicket}>Create Jira ticket</button>
+        <div className={styles.jira_ticket_creator_container}>
+            <button
+                className={styles.create_ticket_btn}
+                onClick={addJiraTicket}
+            >
+                Create Jira ticket
+            </button>
             {jiraTicketLoading && <p>Loading...</p>}
-            {jiraTicketError && <p>Error: {jiraTicketError.message}</p>}
-            {jiraTicket && <p>Jira ticket created: {jiraTicket.key}</p>}
+            {jiraTicketError && <p className="error_message">Error: {jiraTicketError.message}</p>}
+            {jiraTicket && !jiraTicketLoading && (
+                <p>Jira ticket created: {jiraTicket.key}</p>
+            )}
         </div>
     );
 }
