@@ -1,0 +1,17 @@
+{
+    "name": "swapi-issues-tomwray",
+    "author": "Tom Wray",
+    "version": "1.0.0",
+    "description": "A Jira app that creates issues using the Star Wars API",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "eslint-plugin-react-hooks": "^4.6.0"
+    },
+    "dependencies": {
+        "@forge/resolver": "1.6.6",
+        "@forge/api": "5.0.0"
+    }
+}
