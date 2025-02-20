@@ -15,6 +15,8 @@ See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/pl
 
 ## Quick start
 
+-   Clone the repository
+
 -   Install top-level dependencies:
 
 ```
