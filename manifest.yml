@@ -16,6 +16,10 @@ resources:
 permissions:
     scopes:
         - read:jira-work
+    external:
+        fetch:
+            client:
+                - "swapi.dev"
 app:
     runtime:
         name: nodejs22.x
