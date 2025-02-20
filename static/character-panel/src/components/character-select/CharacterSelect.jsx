@@ -20,10 +20,7 @@ function CharacterSelect({
                     )
                 }
             >
-                <option selected value>
-                    {" "}
-                    -- select an option --{" "}
-                </option>
+                <option disabled value=""> -- select an option -- </option>
                 {characterList.map((character) => (
                     <option key={character.url} value={character.url}>
                         {character.name}

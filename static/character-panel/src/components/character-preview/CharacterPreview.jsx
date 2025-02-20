@@ -37,7 +37,7 @@ CharacterPreview.propTypes = {
         mass: PropTypes.string,
         hair_color: PropTypes.string,
         skin_color: PropTypes.string,
-    }).isRequired,
+    }),
 };
 
 CharacterPreview.defaultProps = {

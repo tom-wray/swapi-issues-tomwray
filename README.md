@@ -45,6 +45,14 @@ forge deploy
 forge install
 ```
 
+### Testing
+
+To run the tests for the components, use the following command inside the `static/character-panel` directory:
+
+```
+npm run test
+```
+
 ### Notes
 
 -   Use the `forge deploy` command when you want to persist code changes.
