@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CharacterPreview from "./components/character-preview/CharacterPreview";
 import CharacterSelect from "./components/character-select/CharacterSelect";
-import JiraTicketCreator from "./components/jira-ticket-creator/JiraTicketCreator";
 
 function App() {
     const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -46,7 +45,6 @@ function App() {
                         setSelectedCharacter={setSelectedCharacter}
                     />
                     <CharacterPreview selectedCharacter={selectedCharacter} />
-                    <JiraTicketCreator selectedCharacter={selectedCharacter} />
                 </>
             )}
         </div>

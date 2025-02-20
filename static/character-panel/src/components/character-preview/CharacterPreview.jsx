@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import JiraTicketCreator from "../jira-ticket-creator/JiraTicketCreator";
 
 function CharacterPreview({ selectedCharacter }) {
     if (!selectedCharacter) {
@@ -13,6 +14,8 @@ function CharacterPreview({ selectedCharacter }) {
             <p>Mass: {selectedCharacter.mass}kg</p>
             <p>Hair colour: {selectedCharacter.hair_color}</p>
             <p>Skin colour: {selectedCharacter.skin_color}</p>
+
+            <JiraTicketCreator selectedCharacter={selectedCharacter} />
         </div>
     );
 }
