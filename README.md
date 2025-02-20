@@ -4,11 +4,14 @@ This project contains a Forge app written in Javascript for a job interview. The
 
 > This task involves building a small Forge (React) app that can fetch character data from the Star Wars API (SWAPI) and should allow the user to create a JIRA ticket containing character details.
 
+[SWAPI](https://swapi.dev) is the Star Wars API, which provides data about the Star Wars universe.
+
 See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
 
 ## Requirements
 
-See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/) for instructions to get set up.
+- Install [Node.js](https://nodejs.org/en/)
+- See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/) for instructions to get set up.
 
 ## Quick start
 
